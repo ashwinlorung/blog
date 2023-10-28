@@ -17,24 +17,24 @@ spec:
                 name: posts-clusterip-srv
                 port:
                   number: 4000
-          - path: /posts/
+          - path: /posts
             pathType: ImplementationSpecific
             backend:
               service:
-                name: query-svc
+                name: query-srv
                 port:
                   number: 4002
           - path: /posts/?(.*)/comments
             pathType: ImplementationSpecific
             backend:
               service:
-                name: comments
+                name: comments-srv
                 port:
                   number: 4001
-          # - path: /?(.*)
-          #   pathType: ImplementationSpecific
-          #   backend:
-          #     service:
-          #       name: client-srv
-          #       port:
-          #         number: 3000
+          - path: /?(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: client-srv
+                port:
+                  number: 3000
